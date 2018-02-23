@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>StarWars Game</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+</head>
+<body>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Star Wars Game</h1>
+            <p class="lead">Select your Heroes from the choices below.</p>
+        </div>
+    </div>
+    <div class="container" id="main-game-section">
+        <div class="container col-lg-12" id="characters-section">
+            <div class="container section-title">Select Your Character</div>
+        </div>
+        <div class="container col-lg-3" id="selected-character-section">
+            <div class="section-title container"></div>
+            <div id="selected-character"></div>
+        </div>
+         <div class="section-title container col-lg-3">
+            <div id="fight-section">
+                <button type="button" id="attack-button" class="btn btn-danger">Attack</button>
+                <div class="jumbotron" id="gameMessage"></div>
+            </div>
+        </div>
+        <div id="action">
+            <div class="character-selection">
+                <div class="container selection-title col-lg-3">
+                    <div id="defender"></div>
+                </div>
+            </div>
+        </div>
+        <div class="container" id="available-to-attack-section">
+            <div class="section-title"></div>
+        </div>
+        
+    </div>
+
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="assets/javascript/starwarsgame.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        
+</body>
+</html>

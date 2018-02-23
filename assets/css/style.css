@@ -1,0 +1,133 @@
+﻿@charset "utf-8";
+/* CSS Document */
+body
+{}
+.jumbotron-fluid 
+{
+	background-image: url(../images/cv8dNmx.png)
+}
+.characterWrapper {
+    width: 75%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+
+#gameMessage
+{
+    text-align:center;
+    font-size: 15px;
+}
+#choose-enemy-button
+{
+    visibility:hidden;
+}
+#restart-button
+{
+    visibility:hidden;
+}
+#turn-counter
+{
+    font-size:150%;
+}
+
+/*Rendering Characters*/
+.character {
+    width: 153px;
+    margin-left: 40px;
+    cursor: pointer;
+    display: inline-block;
+}  
+    .character img {
+        border: none;
+        display: block;
+        height: 200px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+.character-name
+{
+    text-align: center;
+    text-transform:capitalize;
+    line-height: 30px;
+}
+.character-health
+{
+    text-align:center;
+}
+
+
+
+
+/*Battle Data*/
+
+#fightdata
+{
+	max-width: 280px;
+	left: 50%;
+}
+.attack
+{
+    text-align:center;
+}
+.action 
+{
+
+    margin: 15px 0px;
+}
+#attack-button
+{
+    visibility: hidden;
+}
+.enemy
+{
+    width: 153px;
+    margin: 5px;
+    cursor: pointer;
+    display:inline-block;
+    float: left;
+}
+#attacker
+{
+    padding: 5px;
+}
+.target-enemy
+{
+
+}
+
+
+
+
+/*Opponents*/
+#available-to-attack-section
+{
+    float:right;
+}
+#available-to-attack-section img
+{
+    height: 100px;
+}
+
+
+
+
+/*Defender*/
+
+#defender
+{
+    width:190px;
+    height:160px;
+}
+#defender-name
+{
+    text-align:center;
+}
+#defender-image
+{
+padding: 0px 16px;
+}
+#defender-health
+{
+text-align:center;
+}

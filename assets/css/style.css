@@ -1,18 +1,32 @@
 ﻿@charset "utf-8";
 /* CSS Document */
 body
-{}
+{
+    background-color: black;
+}
 .jumbotron-fluid 
 {
-	background-image: url(../images/cv8dNmx.png)
+	background-image: url(../images/cv8dNmx.png);
+    border-bottom: 3px solid gray;
 }
 .characterWrapper {
     width: 75%;
     margin-right: auto;
     margin-left: auto;
 }
-
-
+.display-4
+{
+    color:yellow;
+}
+.lead
+{
+    color:white;
+}
+.display-3
+{
+    text-align:center;
+    color: yellow;
+}
 #gameMessage
 {
     text-align:center;

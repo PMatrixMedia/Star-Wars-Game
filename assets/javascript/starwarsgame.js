@@ -1,63 +1,79 @@
 //Global variables
-$(document).ready(function() {
+$(document).ready(function () {
 
-//audio clips
-let audio = new Audio('assets/audio/imperial_march.mp3');
-let force = new Audio('assets/audio/force.mp3');
-let blaster = new Audio('assets/audio/blaster.mp3');
-let jediKnow = new Audio('assets/audio/winner.mp3');
-let lightsaber = new Audio('assets/audio/lightsaber.mp3');
-let rtwoo = new Audio('assets/audio/bb8.mp3');
-
-//Array of Playable Characters
-let character = {
-    'obiwan': {
-        name: 'obiwan',
-        health: 120,
-        attack: 8,
-        imageUrl: "../images/0biwan2.png",
-        enemyAttackBack: 15
-    }, 
-    'kylo': {
-        name: 'kylo',
-        health: 100,
-        attack: 14,
-        imageUrl: "../images/kyloren.png",
-        enemyAttackBack: 5
-    }, 
-    'bobbafett': {
-        name: 'bobbafett',
-        health: 150,
-        attack: 8,
-        imageUrl: "../images/bobafett.png",
-        enemyAttackBack: 20
-    }, 
-    'stormtrooper': {
-        name: 'stormtrooper',
-        health: 180,
-        attack: 7,
-        imageUrl: "../images/stormtrooper.png",
-        enemyAttackBack: 20
-    }
-};
-
-var currSelectedCharacter;
-var currDefender;
-var combatants = [];
-var indexofSelChar;
-var attackResult;
-var turnCounter = 1;
-var killCount = 0;
+    //audio clips
+    let audio = new Audio('assets/audio/imperial_march.mp3');
+    let force = new Audio('assets/audio/force.mp3');
+    let blaster = new Audio('assets/audio/blaster.mp3');
+    let jediKnow = new Audio('assets/audio/winner.mp3');
+    let lightsaber = new Audio('assets/audio/lightsaber.mp3');
+    let rtwoo = new Audio('assets/audio/bb8.mp3');
 
 
-var renderOne = function(character, renderArea, makeChar) {
-    //character: obj, renderArea: class/id, makeChar: string
-    var charDiv = $("<div class='character' data-name='" + character.name + "'>");
-    var charName = $("<div class='character-name'>").text(character.name);
-    var charImage = $("<img alt='image' class='character-image'>").attr("src", character.imageUrl);
-    var charHealth = $("<div class='character-health'>").text(character.health);
-    charDiv.append(charName).append(charImage).append(charHealth);
-    $(renderArea).append(charDiv);
+    //Array of Playable Characters
+
+    var character = ["#obiwan", "#kylo", "#bobbafett", "#stormtrooper"];
+
+    let character = {
+        '#obiwan': {
+            name: 'obiwan',
+            health: 120,
+            attack: 8,
+            imageUrl: "../images/0biwan2.png",
+            enemyAttackBack: 15
+        },
+        '#kylo': {
+            name: 'kylo',
+            health: 100,
+            attack: 14,
+            imageUrl: "../images/kyloren.png",
+            enemyAttackBack: 5
+        },
+        '#bobbafett': {
+            name: 'bobbafett',
+            health: 150,
+            attack: 8,
+            imageUrl: "../images/bobafett.png",
+            enemyAttackBack: 20
+        },
+        '#stormtrooper': {
+            name: 'stormtrooper',
+            health: 180,
+            attack: 7,
+            imageUrl: "../images/stormtrooper.png",
+            enemyAttackBack: 20
+        }
+    };
+
+    $("character").click(function () {
+        $('renderOne').trigger("click");
+        console.log("character rendered");
+    });
+
+
+    var currSelectedCharacter;
+    var currDefender;
+    var combatants = [];
+    var indexofSelChar;
+    var attackResult;
+    var turnCounter = 1;
+    var killCount = 0;
+
+
+    var renderOne = function (character, renderArea, makeChar) {
+        //character: obj, renderArea: class/id, makeChar: string
+        var charDiv = $("<div id='character' data-name='" + character.name + "'>");
+        var charName = $("<div class='character-name'>").text(character.name);
+        var charImage = $("<img alt='image' class='character-image'>").attr("src", character.imageUrl);
+        var charHealth = $("<div class='character-health'>").text(character.health);
+        charDiv.append(charName).append(charImage).append(charHealth);
+        $(renderArea).append(charDiv);
+
+
+       // $("#selected-character-section").append(renderOne); {
+       // });
+
+	
 
 
     //Capitalizes the first letter in characters name
@@ -77,14 +93,14 @@ var renderOne = function(character, renderArea, makeChar) {
     var newMessage = $("<div>").text(message);
     gameMesageSet.append(newMessage);
 
-    if (message == 'clearMessage') {
+    if (message === 'clearMessage') {
       gameMesageSet.text('');
     }
   };
 
   var renderCharacters = function(charObj, areaRender) {
     //render all characters
-    if (areaRender == '#characters-section') {
+    if (areaRender === '#characters-section') {
       $(areaRender).empty();
       for (var key in charObj) {
         if (charObj.hasOwnProperty(key)) {
@@ -93,13 +109,13 @@ var renderOne = function(character, renderArea, makeChar) {
       }
     }
     //render player character
-    if (areaRender == '#selected-character') {
+    if (areaRender === '#selected-character') {
       $('#selected-character').prepend("Your Character");       
       renderOne(charObj, areaRender, '');
       $('#attack-button').css('visibility', 'visible');
     }
     //render combatants
-    if (areaRender == '#available-to-attack-section') {
+    if (areaRender === '#available-to-attack-section') {
         $('#available-to-attack-section').prepend("Choose Your Next Opponent");      
       for (var i = 0; i < charObj.length; i++) {
 
@@ -118,25 +134,25 @@ var renderOne = function(character, renderArea, makeChar) {
       });
     }
     //render defender
-    if (areaRender == '#defender') {
+    if (areaRender === '#defender') {
       $(areaRender).empty();
       for (var i = 0; i < combatants.length; i++) {
         //add enemy to defender area
-        if (combatants[i].name == charObj) {
+        if (combatants[i].name === charObj) {
           $('#defender').append("Your selected opponent")
           renderOne(combatants[i], areaRender, 'defender');
         }
       }
     }
     //re-render defender when attacked
-    if (areaRender == 'playerDamage') {
+    if (areaRender === 'playerDamage') {
       $('#defender').empty();
       $('#defender').append("Your selected opponent")
       renderOne(charObj, '#defender', 'defender');
       lightsaber.play();
     }
     //re-render player character when attacked
-    if (areaRender == 'enemyDamage') {
+    if (areaRender === 'enemyDamage') {
       $('#selected-character').empty();
       renderOne(charObj, '#selected-character', '');
     }
@@ -218,14 +234,14 @@ var renderOne = function(character, renderArea, makeChar) {
   });
 
 //Restarts the game - renders a reset button
-  var restartGame = function(inputEndGame) {
-    //When 'Restart' button is clicked, reload the page.
+
+	var restartGame = function(inputEndGame) {
+   // When 'Restart' button is clicked, reload the page.
     var restart = $('<button class="btn">Restart</button>').click(function() {
       location.reload();
     });
     var gameState = $("<div>").text(inputEndGame);
     $("#gameMessage").append(gameState);
     $("#gameMessage").append(restart);
-  };
-
+  });
 });
